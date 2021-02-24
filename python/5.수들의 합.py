@@ -1,13 +1,11 @@
 import sys
-#sys.stdin = open("input.txt","rt")
-
-n,m = map(int,input().split())
+#sys.stdin=open("input.txt", "r")
+n,m=map(int,input().split())
 a=list(map(int,input().split()))
 lt=0
 rt=1
 tot=a[0]
 cnt=0
-
 while True:
     if tot<m:
         if rt<n:
@@ -23,25 +21,18 @@ while True:
         tot-=a[lt]
         lt+=1
 print(cnt)
-
-
-
 '''
-n,m = map(int,input().split())
+n,m=map(int,input().split())
 a=list(map(int,input().split()))
 cnt=0
-
-for i in range(0,n):
-    num = 0
-    for j in range(i,n):
-        if num<m:
-            num+=a[j]
-            print(num)
-        elif num>m:
-            print(num)
-            break
-        elif num==m:
+for i in range(len(a)+1):
+    for j in range(i,len(a)+1):
+        if sum(a[i:j])<m:
+            continue
+        elif sum(a[i:j])==m:
             cnt+=1
-
+            break
+        elif sum(a[i:j])>m:
+            break
 print(cnt)
 '''

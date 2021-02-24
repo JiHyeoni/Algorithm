@@ -1,6 +1,20 @@
 import sys
-#sys.stdin = open("input.txt","rt")
+#sys.stdin=open("input.txt", "r")
 
+n=int(input())
+for x in range(n):
+    str=input()
+    str=str.upper()
+    for i in range(len(str)//2):
+        if str[i]==str[len(str)-i-1]:
+            continue
+        else:
+            print("#%d NO" % (x + 1))
+            break
+    else:
+        print("#%d YES" %(x+1))
+
+'''
 n=int(input())
 
 for i in range(n):
@@ -14,9 +28,9 @@ for i in range(n):
     else:
          print("#%d YES" %(i+1))
 '''
+'''
 if s==s[::-1]:
     print("#%d YES" %(i+1))
 else:
     print("#%d NO" %(i+1))
 '''
-

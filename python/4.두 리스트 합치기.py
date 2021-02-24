@@ -1,6 +1,27 @@
 import sys
-#sys.stdin = open("input.txt","rt")
+#sys.stdin=open("input.txt", "r")
 
+n=int(input())
+a=list(map(int,input().split()))
+m=int(input())
+b=list(map(int,input().split()))
+c=[]
+n1=0
+n2=0
+while n1<n and n2<m:
+    if a[n1]<=b[n2]:
+        c.append(a[n1])
+        n1+=1
+    else:
+        c.append(b[n2])
+        n2+=1
+if n1<n:
+    c=c+a[n1:]
+elif n2<m:
+    c=c+b[n2:]
+for x in c:
+    print(x,end=' ')
+'''
 n=int(input())
 a=list(map(int,input().split()))
 m=int(input())
@@ -23,18 +44,4 @@ if p2<m:
 
 for x in c :
     print(x, end= ' ')
-
-
 '''
-a=[]
-for i in range(2):
-    n = int(input())
-    b = list(map(int, input().split()))
-    for j in range(0,n):
-        a.append(b[j])
-a.sort()
-for i in a:
-    print(i,end=' ')
-'''
-
-
