@@ -1,5 +1,26 @@
 import sys
-#sys.stdin = open("input.txt","rt")
+#sys.stdin=open("input.txt", "r")
+n=int(input())
+a=[list(map(int,input().split())) for _ in range(n)]
+sum=0
+b=n//2
+c=n//2
+
+for i in range((n//2)+1):
+    for j in range(b,c+1):
+        sum+=a[i][j]
+    b-=1
+    c+=1
+b += 2
+c -= 2
+for i in range((n//2)+1,n):
+    for j in range(b,c+1):
+        sum+=a[i][j]
+    b += 1
+    c -= 1
+print(sum)
+
+'''
 n=int(input())
 a=[list(map(int,input().split())) for _ in range(n)]
 res=0
@@ -16,31 +37,4 @@ for i in range(n):
         e-=1
 
 print(res)
-
-'''
-n=int(input())
-a=[list(map(int,input().split())) for _ in range(n)]
-lp=n//2
-rp=n//2
-num=0
-
-for i in range(0,n//2+1):
-    for j in range(lp,rp+1):
-        num+=a[i][j]
-    lp-=1
-    rp+=1
-    if lp<0:
-        break
-
-lp=1
-rp=n-2
-for i in range(n//2+1,n):
-
-    for j in range(lp,rp+1):
-        num+=a[i][j]
-    lp += 1
-    rp -= 1
-    if lp>rp:
-        break
-print(num)
 '''
