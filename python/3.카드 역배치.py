@@ -1,11 +1,10 @@
 import sys
 #sys.stdin=open("input.txt", "r")
 
-n=list(range(21))
+a=list(range(1,21))
 for _ in range(10):
-    a,b=map(int,input().split())
-    for i in range((b-a+1)//2):
-        n[a+i],n[b-i]=n[b-i],n[a+i]
-n.pop(0)
-for x in n:
+    s,e=map(int,input().split())
+    for i in range((e-s)//2+1):
+        a[s-1+i],a[e-1-i]=a[e-1-i],a[s-1+i]
+for x in a:
     print(x,end=' ')
