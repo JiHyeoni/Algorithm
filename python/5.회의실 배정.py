@@ -1,9 +1,7 @@
 import sys
-#sys.stdin = open("input.txt","rt")
-
+#sys.stdin=open("input.txt", "r")
 n=int(input())
 meeting=[]
-
 for i in range(n):
     s,e=map(int,input().split())
     meeting.append((s,e))
@@ -15,5 +13,4 @@ for s,e in meeting:
     if s>=et:
         et=e
         cnt+=1
-
 print(cnt)
