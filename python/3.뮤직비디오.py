@@ -1,6 +1,5 @@
 import sys
-#jbsys.stdin = open("input.txt","rt")
-
+#sys.stdin=open("input.txt", "r")
 def Count(capacity):
     cnt=1
     sum=0
@@ -16,16 +15,15 @@ def Count(capacity):
 n,m=map(int,input().split())
 a=list(map(int,input().split()))
 maxx=max(a)
-largest=sum(a)
 lt=1
-rt=largest
+rt=sum(a)
 res=0
+
 while lt<=rt:
     mid=(lt+rt)//2
     if mid>=maxx and Count(mid)<=m:
         res=mid
-        rt = mid - 1
+        rt=mid-1
     else:
         lt=mid+1
-
 print(res)
