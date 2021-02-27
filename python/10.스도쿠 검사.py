@@ -10,6 +10,7 @@ def Check(a):
             ch2[a[j][i]]=1
         if sum(ch1)!=9 or sum(ch2)!=9:
             return False
+
     for i in range(3):
         for j in range(3):
             ch3=[0]*10
