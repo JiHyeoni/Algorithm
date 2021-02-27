@@ -1,11 +1,12 @@
 import sys
 #sys.stdin=open("input.txt", "r")
+
+n=int(input())
+a=[list(map(int,input().split()))for _ in range(n)]
+a.append([0]*n)
+a.insert(0,[0]*n)
 dx=[1,0,-1,0]
 dy=[0,1,0,-1]
-n=int(input())
-a=[list(map(int,input().split())) for _ in range(n)]
-a.insert(0,[0]*n)
-a.append([0]*n)
 for i in range(n+2):
     a[i].append(0)
     a[i].insert(0,0)

@@ -1,5 +1,6 @@
 import sys
 #sys.stdin=open("input.txt", "r")
+
 n,m=map(int,input().split())
 a=list(map(int,input().split()))
 a.sort()
@@ -14,6 +15,7 @@ while lt<=rt:
     else:
         break
 print(mid+1)
+
 
 
 '''
