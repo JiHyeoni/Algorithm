@@ -1,23 +1,25 @@
 import sys
-#sys.stdin=open("input.txt", "r")
+#sys.stdin = open("input.txt","rt")
 
 def Count(len):
+    ep=a[0]
     cnt=1
-    ep=xl[0]
-    for i in range(1,n):
-        if xl[i]-ep>=len:
+    for x in range(1,n):
+        if a[x]-ep>=len:
             cnt+=1
-            ep=xl[i]
+            ep=a[x]
     return cnt
 
-n,c=map(int,input().split())
-xl=[]
-for _ in range(n):
-    xl.append(int(input()))
-xl.sort()
-lt=1
-rt=xl[n-1]
 
+n,c=map(int,input().split())
+a=[]
+for _ in range(n):
+    a.append(int(input()))
+
+a.sort()
+lt=0
+rt=max(a)
+res=0
 while lt<=rt:
     mid=(lt+rt)//2
     if Count(mid)>=c:
