@@ -1,12 +1,15 @@
 import sys
 #sys.stdin = open("input.txt","rt")
+
 n=int(input())
 a=list(map(int,input().split()))
+
 lt=0
 rt=n-1
-last=0
-res=""
+res=''
 tmp=[]
+last=0
+
 while lt<=rt:
     if a[lt]>last:
         tmp.append((a[lt],'L'))
@@ -16,12 +19,12 @@ while lt<=rt:
     if len(tmp)==0:
         break
     else:
-        res=res+tmp[0][1]
         last=tmp[0][0]
+        res=res+tmp[0][1]
         if tmp[0][1]=='L':
             lt+=1
         else:
             rt-=1
-    tmp.clear()
+        tmp.clear()
 print(len(res))
 print(res)

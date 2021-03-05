@@ -1,5 +1,6 @@
 import sys
 #sys.stdin = open("input.txt","rt")
+
 n=int(input())
 a=list(map(int,input().split()))
 seq=[0]*n
@@ -11,7 +12,5 @@ for i in range(n):
             break
         elif seq[j]==0:
             a[i]-=1
-
-
 for x in seq:
     print(x,end=' ')
