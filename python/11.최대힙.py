@@ -1,11 +1,10 @@
 import sys
 import heapq as hq
-#sys.stdin = open("input.txt","rt")
+#sys.stdin=open("input.txt", "r")
 a=[]
-
 while True:
     n=int(input())
-    if n == -1 :
+    if n==-1:
         break
     if n==0:
         if len(a)!=0:
@@ -14,3 +13,6 @@ while True:
             print(-1)
     else:
         hq.heappush(a,-n)
+
+
+
