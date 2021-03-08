@@ -1,5 +1,5 @@
 import sys
-#sys.stdin = open("input.txt","rt")
+#sys.stdin=open("input.txt", "r")
 a=input()
 b=input()
 str1=[0]*52
@@ -9,12 +9,12 @@ for x in a:
     if x.isupper():
         str1[ord(x)-65]+=1
     else:
-        str1[ord(x)-71]+=1
+        str1[ord(x) - 71] += 1
 for x in b:
     if x.isupper():
         str2[ord(x)-65]+=1
     else:
-        str2[ord(x)-71]+=1
+        str2[ord(x) - 71] += 1
 
 for i in range(52):
     if str1[i]!=str2[i]:
@@ -22,3 +22,20 @@ for i in range(52):
         break
 else:
     print("YES")
+'''
+a=input()
+b=input()
+sH=dict()
+
+for x in a:
+    sH[x]=sH.get(x,0)+1
+for x in b:
+    sH[x] = sH.get(x, 0)-1
+
+for x in a:
+    if sH.get(x)!=0:
+        print("NO")
+        break
+else:
+    print("YES")
+'''
