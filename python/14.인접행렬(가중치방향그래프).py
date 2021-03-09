@@ -2,12 +2,12 @@ import sys
 sys.stdin=open("input.txt", "r")
 
 n,m=map(int,input().split())
-g=[[0]*(n+1) for _ in range(n+1)]
-for i in range(m):
-    a,b,k=map(int,input().split())
-    g[a][b]=k
-
-for i in range(1,n+1):
-    for j in range(1,n+1):
-        print(g[i][j],end=' ')
+a=[[0]*n for _ in range(n)]
+for _ in range(m):
+    s,e,n=map(int,input().split())
+    a[s-1][e-1]=n
+    
+for i in range(n+1):
+    for j in range(n+1):
+        print(a[i][j],end=' ')
     print()
