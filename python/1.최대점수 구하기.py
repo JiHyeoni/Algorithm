@@ -1,6 +1,27 @@
 import sys
 #sys.stdin=open("input.txt", "r")
 
+def DFS(L,s,t,x):
+    global max
+    if t>m:
+        return
+    if s>max:
+        max=s
+    for i in range(x,n):
+        DFS(L+1,s+a[i][0],t+a[i][1],i+1)
+
+if __name__ == '__main__':
+    n,m=map(int,input().split())
+    a=[]
+    ch=[0]*n
+    max=-2147000000
+    for _ in range(n):
+        s,t=map(int,input().split())
+        a.append((s,t))
+    DFS(0,0,0,0)
+    print(max)
+
+'''
 def DFS(L,sum,time):
     global res
     if time>m:
@@ -24,37 +45,4 @@ if __name__ == '__main__':
     res=-2147000000
     DFS(0,0,0)
     print(res)
-
-
-'''
-def DFS(L,sum,time):
-    global max
-    if time>m:
-        return 
-    if L==n:
-        if max<sum:
-            max=sum
-    else:
-        for x in range(n):
-            if ch[x]==0:
-                ch[x]=1
-                if time+b[x]<=m:
-                    DFS(L+1,sum+a[x],time+b[x])
-                else:
-                    DFS(L + 1, sum, time)
-                ch[x]=0
-
-
-if __name__ == '__main__':
-    n,m=map(int,input().split())
-    max=0
-    a=[]
-    b=[]
-    ch=[0]*n
-    for i in range(n):
-        c,d=map(int,input().split())
-        a.append(c)
-        b.append(d)
-    DFS(0,0,0)
-    print(max)
 '''
