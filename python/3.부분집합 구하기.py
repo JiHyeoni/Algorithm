@@ -1,19 +1,19 @@
 import sys
 #sys.stdin=open("input.txt", "r")
-def DFS(v):
-    if v==n+1:
-        for i in range(1,n+1):
+
+def DFS(L):
+    if L==n:
+        for i in range(n):
             if ch[i]==1:
-                print(i,end=' ')
+                print(i+1,end=' ')
         print()
-        return
     else:
-        ch[v]=1
-        DFS(v+1)
-        ch[v]=0
-        DFS(v+1)
+        ch[L]=1
+        DFS(L+1)
+        ch[L]=0
+        DFS(L+1)
 
 if __name__ == '__main__':
-    n = int(input())
-    ch=[0]*(n+1)
-    DFS(1)
+    n=int(input())
+    ch=[0]*n
+    DFS(0)
