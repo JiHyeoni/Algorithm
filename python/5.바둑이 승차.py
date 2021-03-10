@@ -1,27 +1,24 @@
 import sys
 #sys.stdin=open("input.txt", "r")
-
 def DFS(L,sum,tsum):
-    global result
-    if sum+(total-tsum)<result:
+    global max
+    if sum+(total-tsum)<max:
         return
     if sum>c:
         return
     if L==n:
-        if sum>result:
-            result=sum
+        if sum>max:
+            max=sum
     else:
-        DFS(L+1,sum+a[L],tsum+a[L])
-        DFS(L+1,sum,tsum+a[L])
-
-
+        DFS(L+1,sum+w[L],tsum+w[L])
+        DFS(L+1,sum,tsum+w[L])
 
 if __name__ == '__main__':
     c,n=map(int,input().split())
-    a=[0]*n
-    result=-2147000000
-    for i in range(n):
-        a[i]=int(input())
-    total=sum(a)
+    w=[]
+    max=-2147000000
+    for _ in range(n):
+        w.append(int(input()))
+    total=sum(w)
     DFS(0,0,0)
-    print(result)
+    print(max)
