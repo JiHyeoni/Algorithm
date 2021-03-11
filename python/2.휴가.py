@@ -3,6 +3,8 @@ import sys
 
 def DFS(L,sum):
     global max
+    if L>n+1:
+        return
     if L==n+1:
         if sum>max:
             max=sum
