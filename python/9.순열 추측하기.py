@@ -1,40 +1,41 @@
 import sys
-import itertools as it #순열이나 조합을 자동으로 구해줌
+import itertools as it
 #sys.stdin=open("input.txt", "r")
 
 n, f = map(int, input().split())
-b=[1]*n
-cnt=0
-for i in range(1,n):
-    b[i]=b[i-1]*(n-i)//i
+b = [1] * n
+for i in range(1, n):
+    b[i] = b[i - 1] * (n - i) // i
 a=list(range(1,n+1))
-for tmp in it.permutations(a):#a에 있는 자료의 모든 순열의 경우를 구해줌
+
+for x in it.permutations(a):
     sum=0
-    for L,x in enumerate(tmp):
-        sum+=(x*b[L])
+    for i in range(n):
+        sum=sum+(x[i]*b[i])
     if sum==f:
-        for x in tmp:
-            print(x, end=' ')
+        for i in x:
+            print(i,end =' ')
         break
+
 
 '''
 def DFS(L,sum):
-    if L==n and sum==f:
-        for x in p:
-            print(x,end=' ')
-        sys.exit(0)
+    if L==n:
+        if sum==f:
+            for x in p:
+                print(x,end=' ')
+            print()
+            sys.exit(0)
     else:
         for i in range(1,n+1):
             if ch[i]==0:
                 ch[i]=1
                 p[L]=i
-                DFS(L+1,sum+(p[L]*b[L]))
+                DFS(L+1,sum+(b[L]*p[L]))
                 ch[i]=0
 
-
-
 if __name__ == '__main__':
-    n, f = map(int, input().split())
+    n,f=map(int,input().split())
     p=[0]*n
     b=[1]*n
     ch=[0]*(n+1)
