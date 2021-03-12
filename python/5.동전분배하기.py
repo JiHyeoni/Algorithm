@@ -1,5 +1,6 @@
 import sys
 #sys.stdin=open("input.txt", "r")
+
 def DFS(L):
     global res
     if L==n:
@@ -16,13 +17,12 @@ def DFS(L):
             money[i]+=coin[L]
             DFS(L+1)
             money[i]-=coin[L]
-
 if __name__ == '__main__':
     n=int(input())
     coin=[]
-    money=[0]*3
-    res=2147000000
     for _ in range(n):
         coin.append(int(input()))
+    money=[0]*3
+    res=2147000000
     DFS(0)
     print(res)
