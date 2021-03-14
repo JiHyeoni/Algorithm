@@ -24,5 +24,6 @@ while dQ:
                 dQ.append((x,y))
 if dis[6][6]==0:
     print(-1)
+
 else:
     print(dis[6][6])
