@@ -8,10 +8,9 @@ def DFS(L,sum):
     if L==k:
         if sum==t:
             cnt+=1
-
     else:
-        for j in range(n[L]+1):
-            DFS(L+1,sum+p[L]*j)
+        for i in range(n[L]+1):
+            DFS(L+1,sum+i*p[L])
 
 if __name__ == '__main__':
     t=int(input())
@@ -23,6 +22,5 @@ if __name__ == '__main__':
         a,b=map(int,input().split())
         p.append(a)
         n.append(b)
-    a=sum(n)
     DFS(0,0)
     print(cnt)
