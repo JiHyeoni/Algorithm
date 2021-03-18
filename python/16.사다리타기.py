@@ -12,6 +12,7 @@ def DFS(x,y):
             DFS(x,y+1)
         else:
             DFS(x-1,y)
+
 if __name__ == '__main__':
     a=[list(map(int,input().split())) for _ in range(10)]
     ch=[[0]*10 for _ in range(10)]
