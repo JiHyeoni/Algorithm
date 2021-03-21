@@ -2,20 +2,20 @@ import sys
 #sys.stdin=open("input.txt", "r")
 
 n=int(input())
-bricks=[]
+arr=[]
 for _ in range(n):
     a,b,c=map(int,input().split())
-    bricks.append((a,b,c))
+    arr.append((a,b,c))
+arr.sort(reverse=True)
+dy=[0]*n
+dy[0]=arr[0][1]
+max_h=arr[0][1]
 
-bricks.sort(reverse=True)
-dy=[0]*(n+1)
-dy[0]=bricks[0][1]
-res=bricks[0][1]
 for i in range(1,n):
-    max_h=0
+    res=0
     for j in range(i-1,-1,-1):
-        if bricks[j][2]>bricks[i][2] and max_h<dy[j]:
-            max_h=dy[j]
-    dy[i]=max_h+bricks[i][1]
-    res=max(res,dy[i])
-print(res)
+        if arr[i][2]<arr[j][2] and dy[j]>res:
+            res=dy[j]
+    dy[i]=res+arr[i][1]
+    max_h=max(max_h,dy[i])
+print(max_h)

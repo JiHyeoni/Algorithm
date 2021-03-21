@@ -3,17 +3,16 @@ import sys
 
 n=int(input())
 a=list(map(int,input().split()))
-a.insert(0,0)
-max=-2147000000
-dy=[0]*(n+1)
-dy[1]=1
-for i in range(2,n+1):
+dy=[0]*n
+dy[0]=1
+max=0
+
+for i in range(1,n):
     res=0
-    for j in range(i-1,0,-1):
-        if a[j]<a[i] and dy[j]>res:
+    for j in range(i-1,-1,-1):
+        if a[i]>a[j] and res<dy[j]:
             res=dy[j]
     dy[i]=res+1
-    if dy[i]>max:
+    if max<dy[i]:
         max=dy[i]
 print(max)
-
