@@ -2,26 +2,31 @@ import java.util.*;
 
 public class Main {
 
-	public ArrayList<String> solution(int n,String[] str) {
+	public ArrayList<String> solution(int n, String[] str) {
 		ArrayList<String> answer=new ArrayList<>();
-		for(String x:str) {
-			char[] s=x.toCharArray();
+		
+		for(String x: str)
+		{
 			int lt=0;
 			int rt=x.length()-1;
-			while (lt<rt) {
+			char s[]=x.toCharArray();
+			while(lt<rt)
+			{
 				char tmp=s[lt];
 				s[lt]=s[rt];
 				s[rt]=tmp;
 				lt++;
 				rt--;
 			}
-			String tmp=String.valueOf(s);
-			answer.add(tmp);
+			x=String.valueOf(s);
+			answer.add(x);
+			
 		}
-		/*for(String x:str) {
+		
+		/*for (String x:str)
+		{
 			String tmp=new StringBuilder(x).reverse().toString();
 			answer.add(tmp);
-		
 		}*/
 
 		return answer;
@@ -30,15 +35,17 @@ public class Main {
 		
 		Main T=new Main();
 		Scanner kb=new Scanner(System.in);
-		int n=kb.nextInt();
-		String[] str=new String[n];
-		for(int i=0; i<n; i++) {
+		int num=kb.nextInt();
+		String str[]=new  String[num];
+		for (int i =0;i<num;i++)
+		{
 			str[i]=kb.next();
 		}
-		for (String x: T.solution(n,str)) {
-			System.out.println(x);
+		for (String x : T.solution(num,str)) {
+			System.out.print(x);
+			System.out.println();
 		}
-		
+				
 	}
 	
 }
