@@ -67,7 +67,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
 });
 console.log('End');
 
-//promise chining은 비동기 작업을 순차적으로 실행해야 할 때 
+//promise chaining은 비동기 작업을 순차적으로 실행해야 할 때 
 //전체 코드를 좀 더 깔끔하게 나타내기 위해 사용
 
 fetch('https://jsonplaceholder.typicode.com/users')
@@ -83,3 +83,38 @@ fetch('https://jsonplaceholder.typicode.com/users')
 });
 
 console.log('End');
+
+
+//rejected상태가 되면 실행할 콜백
+fetch('https://jsonplaceholder.typicode.com/users')
+.then((response)=>response.text(),(error)=>{console.log(error);})
+//첫번째 콜백 -> promise 객체가 fulfilled상태가 되면 실행, 두번째 객체 -> promise 객체가 rejected 상태가 되면 실행
+.then((result)=>{console.log(result);});
+
+
+//catch메소드 -> 가장 마지막에 작성하는것이 좋음
+fetch('https://jsonplaceholder.typicode.commmmm/users')
+.then((response)=>response.text())
+.then((reulst)=>{
+console.log(result);
+throw new Error('test');
+})
+.catch((error)=>{console.log(error);}); //catch->promise객체가 rejected 상태가 되면 실행할 코드를 등록하는 메소드
+
+//finally 메소드 -> fulfilled,rejected 상태 상관없이 실행시키고 싶은 메소드가 있을 때
+//catch메소드보다도 뒤에 사용
+fetch('https://jsonplaceholder.typicode.com/users')
+.then((response)=>ressponse.text())
+.then((result)=>{console.log(result);})
+.catch((error)=>{console.log(error);})
+.finally(()=>{console.log('exit');}); //파라미터 필요X
+
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then((response)=>response.text())
+.then((result)=>{console.log(result);})
+.catch((error)=>{
+  console.log(error);
+  throw new Error('from catch method');
+})
+.finally(()=>{console.log('exit');});
