@@ -118,3 +118,14 @@ fetch('https://jsonplaceholder.typicode.com/users')
   throw new Error('from catch method');
 })
 .finally(()=>{console.log('exit');});
+
+
+//직접 만들어보는 promise 객체
+
+const p = new Promise((resolve,reject)=>{
+  //setTimeout(()=>{resolve('success');},2000);//resolve함수는 promise객체를 fulfilled상태로 만듦, argument는 작업성공내용이 됨
+  setTimeout(()=>{reject (new Error('fail'),2000);}); //reject->생성되는 promise객체를 rejected상태로 만듦, argument는 작업 실패 정보
+});
+
+//p.then((result)=>{console.log(result);})
+p.catch((error)=>{console.log(error);});
