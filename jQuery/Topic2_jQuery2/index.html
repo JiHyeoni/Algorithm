@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top">
+        Fade away...
+    </div>
+    <button class="go-to-top">Go To Top</button>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>
+      $(window).on('scroll',function(){
+        //console.log($(window).scrollTop());
+
+        //스크롤이 맨 위에 있을때 -> 1-0/200=1-0=1 투명도가 1(아예 불투명)
+        //1-100/200=1-0.5=0.5 투명도가 0.5(절반만 보임)
+        //1-200/200=1-1=0 투명도가 0(완전 투명) 
+        $('.top').css('opacity',1-$(window).scrollTop()/$('.top').height());
+      })
+
+      $('.go-to-top').on('click',function(){
+        //$(window).scrollTop(0);
+        $('html,body').animate({scrollTop:0},500); //animate(가고싶은 위치, 가고싶은 시간)
+      })
+
+      //each
+      //$('.card').each(function(){
+      //  console.log($(this).text());
+      //})
+    </script>
+</body>
+</html>
