@@ -7,12 +7,12 @@ class Main {
 		for(char x : s.toCharArray()) {
 			if(x=='(') stack.push(x);
 			else if(x==')') {
-				if(stack.empty()) return "NO";
-				else stack.pop();
+				if(stack.isEmpty()) return "NO";
+				stack.pop();
 			}
 		}
 		
-		if(!stack.empty()) return "NO";
+		if(!stack.isEmpty()) return "NO";
 		
 		return answer;
 	}
