@@ -1,5 +1,6 @@
 import java.util.*;
 class Main {	
+
 	class Person{
 		int id;
 		int priority;
