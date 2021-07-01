@@ -1,12 +1,11 @@
 import java.util.*;
 
 class Main {	
-	public Character solution(int n, int []arr){
-		char answer= 'U';
-		for(int i=0;i<n;i++) {
-			for(int j=i+1;j<n;j++) {
-				if(arr[i]==arr[j]) return 'D';
-			}
+	public String solution( int n, int []arr){
+		String answer="U";
+		Arrays.sort(arr);
+		for(int i=0;i<n-1;i++) {
+			if(arr[i]==arr[i+1]) return "D";
 		}
 
 		return answer;
@@ -15,7 +14,7 @@ class Main {
 	public static void main(String[] args){
 		Main T = new Main();
 		Scanner kb = new Scanner(System.in);
-
+		
 		int n=kb.nextInt();
 		int [] arr= new int [n];
 		for(int i=0;i<n;i++) {
