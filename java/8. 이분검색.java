@@ -1,42 +1,42 @@
 import java.util.*;
 
 
-
 class Main {	
-	public int solution(int n,int m,int [] arr)
-	{
+	
+	public int solution(int n, int m,int [] arr) {
 		int answer=0;
+		Arrays.sort(arr);
+		
 		int lt=0;
 		int rt=n-1;
-		Arrays.sort(arr);
+		
 		while(lt<=rt) {
 			int mid=(lt+rt)/2;
-			if(arr[mid]==m) {
+			if(m==arr[mid]) {
 				answer=mid+1;
 				break;
 			}
-			else if(arr[mid]>m) {
-				rt=mid;
-	
+			else if(m>arr[mid]) {
+				lt=mid+1;
 			}
-			else if(arr[mid]<m) {
-				lt=mid;
-			}
+			else rt=mid-1;
 		}
 		
 		return answer;
 	}
-	
+
 	public static void main(String[] args){
 		Main T = new Main();
 		Scanner kb = new Scanner(System.in);
 
 		int n=kb.nextInt();
-		int m= kb.nextInt();
+		int m=kb.nextInt();
 		int [] arr=new int[n];
+		
 		for(int i=0;i<n;i++) {
 			arr[i]=kb.nextInt();
 		}
-		System.out.print(T.solution(n, m, arr));
+		
+		System.out.println(T.solution(n, m, arr));
 	}
 }
