@@ -1,12 +1,11 @@
 import java.util.*;
 
 class Node{
-	int data;
+	int num;
 	Node lt,rt;
 	public Node(int val) {
-		this.data=val;
-		lt=null;
-		rt=null;
+		this.num=val;
+		lt=rt=null;
 	}
 }
 
@@ -16,17 +15,19 @@ class Main {
 		
 		if(root==null) return;
 		else {
+			
 			DFS(root.lt);
 			DFS(root.rt);
-			System.out.print(root.data+" ");
+			System.out.print(root.num+" ");
+			
 		}
+		
 
 	}
 	
 	public static void main(String[] args){
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
-		
 		T.root=new Node(1);
 		T.root.lt=new Node(2);
 		T.root.rt=new Node(3);
@@ -34,7 +35,7 @@ class Main {
 		T.root.lt.rt=new Node(5);
 		T.root.rt.lt=new Node(6);
 		T.root.rt.rt=new Node(7);
-		
+
 		T.DFS(T.root);
 	}
 }
