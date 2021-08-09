@@ -3,19 +3,21 @@ import java.util.*;
 class Node{
 	int data;
 	Node lt,rt;
+	
 	public Node(int val) {
 		this.data=val;
 		lt=rt=null;
 	}
+	
 }
+
 
 class Main {
 	Node root;
 	public void BFS(Node root) {
-		
 		Queue<Node> Q=new LinkedList<>();
-		Q.offer(root);
 		int L=0;
+		Q.offer(root);
 		while(!Q.isEmpty()) {
 			int len=Q.size();
 			System.out.print(L+" : ");
@@ -28,13 +30,13 @@ class Main {
 			L++;
 			System.out.println();
 		}
-	
+		return;
 	}
+
 	
 	public static void main(String[] args){
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
-		
 		T.root=new Node(1);
 		T.root.lt=new Node(2);
 		T.root.rt=new Node(3);
@@ -44,6 +46,5 @@ class Main {
 		T.root.rt.rt=new Node(7);
 		
 		T.BFS(T.root);
-		
 	}
 }
