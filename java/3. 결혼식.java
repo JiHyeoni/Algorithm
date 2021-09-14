@@ -1,54 +1,48 @@
 import java.util.*;
 
-class Time implements Comparable<Time>{
+class People implements Comparable<People>{
 	int time;
-	char state;
-	Time(int time, char state){
+	char  state;
+	
+	People(int time, char state){
 		this.time=time;
 		this.state=state;
 	}
 	
 	@Override
-	public int compareTo (Time o) {
+	public int compareTo(People o) {
 		if(this.time==o.time) return this.state-o.state;
 		else return this.time-o.time;
 	}
 }
 
-
-
 class Main {	
-	
-	public int solution(ArrayList<Time> arr) {
+	public int solution(ArrayList<People> arr) {
 		int cnt=0;
-		int max=Integer.MIN_VALUE;
 		Collections.sort(arr);
-		for(Time ob:arr) {
+		int max=Integer.MIN_VALUE;
+		for(People ob:arr) {
 			if(ob.state=='s') cnt++;
-			else if(ob.state=='e') cnt--;
+			else cnt--;
 			max=Math.max(max, cnt);
 		}
 		return max;
 	}
-
+	
 	public static void main(String[] args){
 		
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
 		
-		ArrayList<Time> arr=new ArrayList<>();
 		int n=kb.nextInt();
-		
+		ArrayList<People> arr= new ArrayList<>();
 		for(int i=0;i<n;i++) {
 			int sT=kb.nextInt();
 			int eT=kb.nextInt();
-			
-			arr.add(new Time(sT,'s'));
-			arr.add(new Time(eT,'e'));
-			
+			arr.add(new People(sT,'s'));
+			arr.add(new People(eT,'e'));
 		}
-		
 		System.out.print(T.solution(arr));
-
-}
+		
+	}
 }
