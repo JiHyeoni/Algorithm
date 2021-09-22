@@ -18,7 +18,6 @@ class Edge implements Comparable<Edge>{
 
 class Main {	
 	static int[] unf;
-	
 	public static int Find(int v) {
 		if(unf[v]==v) return unf[v];
 		else return unf[v]=Find(unf[v]);
@@ -29,36 +28,38 @@ class Main {
 		int fb=Find(b);
 		if(fa!=fb) unf[fa]=fb;
 	}
-	
 	public static void main(String[] args){
 		
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
 		int n=kb.nextInt();
 		int m=kb.nextInt();
+		ArrayList<Edge> graph=new ArrayList<>();
+		int answer=0;
 		unf=new int[n+1];
-		ArrayList<Edge> arr= new ArrayList<>();
+		
 		for(int i=1;i<=n;i++) unf[i]=i;
+		
 		for(int i=0;i<m;i++) {
-			int a=kb.nextInt();
-			int b=kb.nextInt();
-			int c=kb.nextInt();
-			arr.add(new Edge(a,b,c));
+			int v1=kb.nextInt();
+			int v2=kb.nextInt();
+			int cost=kb.nextInt();
+			graph.add(new Edge(v1,v2,cost));
 		}
 		
-		int answer=0;
-		Collections.sort(arr);
+		Collections.sort(graph);
 		
-		for(Edge ob:arr) {
+		for(Edge ob:graph) {
 			int fv1=Find(ob.v1);
 			int fv2=Find(ob.v2);
 			if(fv1!=fv2) {
-				answer+=ob.cost;
 				Union(ob.v1,ob.v2);
+				answer+=ob.cost;
 			}
 		}
-		System.out.println(answer);
 		
+		System.out.print(answer);
+
 		
 	}
 }
