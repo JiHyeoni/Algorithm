@@ -11,6 +11,7 @@ class Main {
 		}
 		return dy[n];
 	}
+
 	public static void main(String[] args){
 		
 		Main T = new Main();
@@ -18,6 +19,6 @@ class Main {
 		int n=kb.nextInt();
 		dy=new int[n+1];
 		System.out.print(T.solution(n));
-		
+
 	}
 }
