@@ -19,6 +19,6 @@ class Main {
 		int n=kb.nextInt();
 		dy=new int[n+2];
 		System.out.print(T.solution(n));
-		
+
 	}
 }
