@@ -24,6 +24,7 @@ class Main {
 		Collections.sort(arr);
 		dy=new int[n];
 		dy[0]=arr.get(0).h;
+		answer=dy[0];
 		for(int i=1;i<n;i++) {
 			int max=0;
 			for(int j=i-1;j>=0;j--) {
