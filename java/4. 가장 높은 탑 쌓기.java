@@ -17,22 +17,20 @@ class Brick implements Comparable<Brick>{
 }
 
 class Main {
-	static int [] dy;
-	static int n;
+	static int dy[];
 	public int solution(ArrayList<Brick> arr) {
 		int answer=0;
-		Collections.sort(arr);
-		dy=new int[n];
 		dy[0]=arr.get(0).h;
 		answer=dy[0];
-		for(int i=1;i<n;i++) {
+		for(int i=1;i<arr.size();i++) {
 			int max=0;
 			for(int j=i-1;j>=0;j--) {
-				if(arr.get(i).w<arr.get(j).w && max<dy[j]) max=dy[j];
+				if(arr.get(i).w<arr.get(j).w&&dy[j]>max) max=dy[j];
 			}
 			dy[i]=max+arr.get(i).h;
 			answer=Math.max(answer, dy[i]);
 		}
+		
 		return answer;
 	}
 
@@ -40,8 +38,9 @@ class Main {
 		
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
-		n=kb.nextInt();
+		int n=kb.nextInt();
 		ArrayList<Brick> arr=new ArrayList<>();
+		dy=new int[n];
 		for(int i=0;i<n;i++) {
 			int a=kb.nextInt();
 			int b=kb.nextInt();
@@ -49,7 +48,7 @@ class Main {
 			
 			arr.add(new Brick(a,b,c));
 		}
+		Collections.sort(arr);
 		System.out.print(T.solution(arr));
-
 	}
 }
