@@ -7,8 +7,8 @@ class Main {
 		Main T = new Main();
 		Scanner kb=new Scanner(System.in);
 		int n=kb.nextInt();
-		int m= kb.nextInt();
-		int [] dy=new int [m+1];
+		int m=kb.nextInt();
+		int [] dy=new int[m+1];
 		for(int i=0;i<n;i++) {
 			int ps=kb.nextInt();
 			int pt=kb.nextInt();
