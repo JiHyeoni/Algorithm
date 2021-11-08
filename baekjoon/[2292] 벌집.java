@@ -1,18 +1,20 @@
 import java.util.*;
 
 class Main{
-    public static void main(String[]args){
+    public static void main(String [] args){
         Scanner s=new Scanner(System.in);
-        int num=s.nextInt();
-        int cnt=1;
-        int sum=1;
-        
+
+        int n=s.nextInt();
+
+        int room=1;
+        int i=1;
         while(true){
-            if(num<=sum) break;
-            sum=sum+cnt*6;
-            cnt++;
+            if(room>=n) break;
+            room=room+i*6;
+            i++;
         }
-        System.out.print(cnt);
-        
+
+        System.out.println(i);
+
     }
 }
