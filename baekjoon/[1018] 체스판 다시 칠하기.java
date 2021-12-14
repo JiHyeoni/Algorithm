@@ -1,46 +1,54 @@
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.*;
+
 class Main{
-    public static boolean arr[][];
-    public static int min=Integer.MAX_VALUE;
 
-    public static void main(String [] args){
-        Scanner s=new Scanner(System.in);
-        int n=s.nextInt();
-        int m=s.nextInt();
+    static boolean arr[][];
+    static int N;
+    static int M;
+    static int min=Integer.MAX_VALUE;
 
-        arr=new boolean[n][m];
+    public static void main(String[]args) throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer(br.readLine());
+        N=Integer.parseInt(st.nextToken());
+        M=Integer.parseInt(st.nextToken());
 
-        for(int i=0;i<n;i++){
-            String str=s.next();
-            for(int j=0;j<m;j++){
-                if(str.charAt(j)=='W') arr[i][j]=true;
+        arr=new boolean[N][M];
+
+        for(int i=0;i<N;i++){
+            String str=br.readLine();
+            for(int j=0;j<M;j++){
+                if(str.charAt(j)=='W'){
+                    arr[i][j]=true;
+                }
                 else arr[i][j]=false;
             }
         }
 
-        for(int i=0;i<n-7;i++){
-            for(int j=0;j<m-7;j++){
-                find(i,j);
+        for(int i=0;i<=N-8;i++){
+            for(int j=0;j<=M-8;j++){
+                chess(i,j);
             }
         }
-
         System.out.println(min);
     }
 
-    public static void find(int x,int y){
+    public static void chess(int x,int y){
         int count=0;
-        boolean WB=arr[x][y];
+        boolean wb=arr[x][y];
 
         for(int i=x;i<x+8;i++){
             for(int j=y;j<y+8;j++){
-                if(arr[i][j]!=WB){
-                    count++;
-                }
-                WB=(!WB);
+                if(arr[i][j]!=wb) count++;
+                wb=(!wb);
             }
-            WB=(!WB);
+            wb=(!wb);
         }
+
         count=Math.min(count,64-count);
-        min=Math.min(min,count);
+        min=Math.min(count,min);
     }
 }
