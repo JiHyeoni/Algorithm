@@ -1,34 +1,32 @@
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.Arrays;
 
 class Main{
+    static int n;
     static int [] stair;
-    static int [] arr;
+    static Integer [] sum;
     public static void main(String [] args) throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        int n=Integer.parseInt(br.readLine());
-        arr=new int[n+1];
-        stair=new int[n+1];
+        n=Integer.parseInt(br.readLine());
+        stair=new int [n+1];
+        sum=new Integer[n+1];
+
         for(int i=1;i<=n;i++){
-            arr[i]=Integer.parseInt(br.readLine());
+            stair[i]=Integer.parseInt(br.readLine());
         }
 
-        Arrays.fill(stair,-1);
-
-        stair[0]=arr[0];
-        stair[1]=arr[1];
-        if(n>=2){
-            stair[2]=arr[1]+arr[2];
-        }
-        System.out.println(find(n));
+        up(n);
+        System.out.println(sum[n]);
     }
 
-    public static int find(int n){
-        if(stair[n]==-1){
-            stair[n]=Math.max(find(n-3)+arr[n-1],find(n-2))+arr[n];
+    public static int up(int k){
+        if(k==0) return sum[k]=0;
+        if (k==1) return sum[k]=stair[k];
+        if (k==2) return sum[k]=stair[k-1]+stair[k];
+        if(sum[k]==null){
+            sum[k]=Math.max(up(k-2),up(k-3)+stair[k-1])+stair[k];
         }
-        return stair[n];
+        return sum[k];
     }
 }
