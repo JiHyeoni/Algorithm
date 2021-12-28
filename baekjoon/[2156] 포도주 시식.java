@@ -1,29 +1,29 @@
 import java.io.IOException;
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 class Main{
-    static int [] arr;
-    static Integer [] dp;
+    static int n;
+    static int [] juice;
+    static Integer [] sum;
     public static void main(String [] args) throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        int n=Integer.parseInt(br.readLine());
-        arr=new int [n+1];
-        dp=new Integer [n+1];
-
+        n=Integer.parseInt(br.readLine());
+        juice=new int[n+1];
+        sum=new Integer[n+1];
         for(int i=1;i<=n;i++){
-            arr[i]=Integer.parseInt(br.readLine());
+            juice[i]=Integer.parseInt(br.readLine());
         }
-        dp[0]=arr[0];
-        dp[1]=arr[1];
-        if(n>1) dp[2]=arr[1]+arr[2];
-        System.out.println(graph(n));
+        System.out.println(drink(n));
     }
 
-    public static int graph(int n){
-        if(dp[n]==null){
-            dp[n]=Math.max(Math.max(graph(n-2),graph(n-3)+arr[n-1])+arr[n],graph(n-1));
+    public static int drink(int k){
+        if(k==0) return sum[k]=0;
+        if(k==1) return sum[k]=juice[k];
+        if(k==2) return sum[k]=juice[k-1]+juice[k];
+        if(sum[k]==null){
+            sum[k]=Math.max(Math.max(drink(k-2),drink(k-3)+juice[k-1])+juice[k],drink(k-1));
         }
-        return dp[n];
+        return sum[k];
     }
 }
