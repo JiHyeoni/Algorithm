@@ -13,6 +13,7 @@ class Main{
                 else System.out.println("neither");
             }
 
+
             else{
                 if(b%a==0) System.out.println("factor");
                 else System.out.println("neither");
