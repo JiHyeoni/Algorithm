@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
+
 class Main{
     static int white=0;
     static int blue=0;
