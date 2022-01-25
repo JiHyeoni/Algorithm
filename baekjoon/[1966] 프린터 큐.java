@@ -1,55 +1,51 @@
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
-class Print{
-    int p;
-    int o;
-    Print(int p,int o){
-        this.p=p;
-        this.o=o;
+class Document{
+    int priority;
+    int order;
+    Document(int priority,int order){
+        this.priority=priority;
+        this.order=order;
     }
 }
 
 class Main{
-    public static void main(String [] args){
-        Scanner s=new Scanner(System.in);
-        int t=s.nextInt();
-        StringBuilder sb=new StringBuilder();
-
+    public static void main(String [] args) throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        LinkedList<Document> queue = new LinkedList<Document>();
+        int t=Integer.parseInt(br.readLine());
         for(int i=0;i<t;i++){
-
-            int n=s.nextInt();
-            int m=s.nextInt();
-            LinkedList <Print> queue=new LinkedList<>();
-
+            StringTokenizer st=new StringTokenizer(br.readLine()," ");
+            int n=Integer.parseInt(st.nextToken());
+            int m=Integer.parseInt(st.nextToken());
+            st=new StringTokenizer(br.readLine()," ");
             for(int j=0;j<n;j++){
-                int num=s.nextInt();
-                queue.offer(new Print(num,j));
+                queue.add(new Document(Integer.parseInt(st.nextToken()),j));
             }
-            int count=0;
-            while(true){
-                Print front=queue.poll();
-                boolean check=true;
-                for(int k=0;k<queue.size();k++){
-                    if(front.p<queue.get(k).p){
-                        queue.offer(front);
-                        for(int l = 0; l < k; l++) {
-                            queue.offer(queue.poll());
-
-                        }
-                        check=false;
-                        break;
-                    }
-                }
-                if(check==false){
-                    continue;
-                }
-                count++;
-                if(front.o==m){
-                    break;
-                }
-            }
-            sb.append(count).append("\n");
+            System.out.println(Printer(queue,m));
+            queue.clear();
         }
-        System.out.println(sb);
+    }
+
+    public static int Printer(LinkedList<Document> queue,int m){
+        int number=1;
+        while(!queue.isEmpty()){
+            int max=0;
+            for(int i=0;i<queue.size();i++){
+                if(queue.get(i).priority>max){
+                    max=queue.get(i).priority;
+                }
+            }
+            while(max!=queue.peekFirst().priority){
+                queue.offerLast(queue.pollFirst());
+            }
+            if(queue.pollFirst().order==m) break;
+            else number++;
+        }
+        return number;
     }
 }
