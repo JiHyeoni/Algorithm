@@ -1,17 +1,14 @@
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.StringTokenizer;
 
 
 class Main {
     static int n;
-    static int arr[][];
-    static int black;
-    static int white;
+    static int [][] arr;
     static StringBuilder sb=new StringBuilder();
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String [] args) throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         n=Integer.parseInt(br.readLine());
         arr=new int[n][n];
         for(int i=0;i<n;i++){
@@ -20,16 +17,16 @@ class Main {
                 arr[i][j]=str.charAt(j)-'0';
             }
         }
-        //sb.append('(');
+
         color(0,0,n);
-        //sb.append(')');
         System.out.println(sb);
     }
+
     public static void color(int row,int col,int size){
         if(check(row,col,size)){
-            if(arr[row][col]==0) sb.append(0);
-            else sb.append(1);
-            return;
+             if(arr[row][col]==1) sb.append(1);
+             else sb.append(0);
+             return;
         }
         size=size/2;
         sb.append('(');
@@ -49,4 +46,5 @@ class Main {
         }
         return true;
     }
+
 }
