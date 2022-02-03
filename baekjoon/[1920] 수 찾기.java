@@ -25,27 +25,21 @@ class Main{
         for (int k : x) {
             int left=0;
             int right=n-1;
-            int mid=(left+right)/2;
             while (true) {
+                int mid=(left+right)/2;
+                if(left>right){
+                    sb.append(0).append("\n");
+                    break;
+                }
                 if(a[mid]==k){
                     sb.append(1).append("\n");
                     break;
                 }
-                if(left>=right||right==left+1){
-                    if(a[right]==k) {
-                        sb.append(1).append("\n");
-                        break;
-                    }
-                    sb.append(0).append("\n");
-                    break;
-                }
-                if(a[mid]>k) {
-                    right=mid;
-                    mid=(left+right)/2;
+                else if(a[mid]>k) {
+                    right=mid-1;
                 }
                 else {
-                    left=mid;
-                    mid=(left+right)/2;
+                    left=mid+1;
                 }
 
             }
