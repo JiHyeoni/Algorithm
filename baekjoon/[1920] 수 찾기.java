@@ -1,51 +1,47 @@
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.io.InputStreamReader;
+import java.util.*;
 
 class Main{
+    static int [] A;
     public static void main(String [] args) throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(br.readLine());
-        int [] a=new int[n];
-        StringTokenizer st=new StringTokenizer(br.readLine()," ");
+        A=new int[n];
+        StringTokenizer st=new StringTokenizer(br.readLine(), " ");
         for(int i=0;i<n;i++){
-            a[i]=Integer.parseInt(st.nextToken());
+            A[i]=Integer.parseInt(st.nextToken());
         }
-        Arrays.sort(a);
         int m=Integer.parseInt(br.readLine());
-        int [] x=new int [m];
-        st=new StringTokenizer(br.readLine()," ");
+        int [] B=new int[m];
+        st=new StringTokenizer(br.readLine(), " ");
         for(int i=0;i<m;i++){
-            x[i]=Integer.parseInt(st.nextToken());
+            B[i]=Integer.parseInt(st.nextToken());
         }
+        Arrays.sort(A);
 
         StringBuilder sb=new StringBuilder();
-        for (int k : x) {
-            int left=0;
-            int right=n-1;
-            while (true) {
-                int mid=(left+right)/2;
-                if(left>right){
-                    sb.append(0).append("\n");
-                    break;
-                }
-                if(a[mid]==k){
-                    sb.append(1).append("\n");
-                    break;
-                }
-                else if(a[mid]>k) {
-                    right=mid-1;
-                }
-                else {
-                    left=mid+1;
-                }
-
-            }
+        for(int integer:B){
+            sb.append(check(integer)).append("\n");
         }
         System.out.println(sb);
+    }
 
+    public static int check(int number){
+        int left=0;
+        int right=A.length-1;
+        boolean check_tf=false;
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(A[mid]==number){
+                check_tf=true;
+                break;
+            }
+            else if(A[mid]<number)
+                left=mid+1;
+            else right=mid-1;
+        }
+        return check_tf?1:0;
     }
 }
-
