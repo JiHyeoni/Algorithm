@@ -1,43 +1,44 @@
 import java.io.IOException;
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.util.*;
 
 class Main{
-    static int k;
     static int n;
-    static int [] cm;
-    static int max;
+    static int max=Integer.MIN_VALUE;
+    static int [] len;
     public static void main(String [] args) throws IOException{
-        BufferedReader br=new BufferedReader (new InputStreamReader(System.in));
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(br.readLine()," ");
-        k=Integer.parseInt(st.nextToken());
+        int k=Integer.parseInt(st.nextToken());
         n=Integer.parseInt(st.nextToken());
-        max=Integer.MIN_VALUE;
-        cm=new int[k];
+        len=new int[k];
         for(int i=0;i<k;i++){
             int num=Integer.parseInt(br.readLine());
-            cm[i]=num;
+            len[i]=num;
             max=Math.max(max,num);
         }
-        System.out.println(len());
+
+        System.out.print(cm());
     }
 
-    public static int count (int number){
-        int cnt=0;
-        for (int i : cm) {
-            cnt+=i/number;
+    public static int cnt(int mid){
+        int count=0;
+        for (int num : len) {
+            count+=num/mid;
         }
-        return cnt;
+        return count;
     }
-    public static int len(){
+
+    public static int cm(){
         int left=0;
         int right=max+1;
         while(left<right){
             int mid=(left+right)/2;
-            if(count(mid)<n) right=mid;
+            if(cnt(mid)<n) right=mid;
             else left=mid+1;
         }
         return right-1;
     }
+
 }
