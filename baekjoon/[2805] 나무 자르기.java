@@ -1,42 +1,41 @@
 import java.io.IOException;
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.util.*;
 
 class Main{
-    static int k;
-    static int n;
-    static int [] m;
+    static int m;
+    static int [] tree;
     static int max;
     public static void main(String [] args) throws IOException{
-        BufferedReader br=new BufferedReader (new InputStreamReader(System.in));
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(br.readLine()," ");
-        k=Integer.parseInt(st.nextToken());
-        n=Integer.parseInt(st.nextToken());
-        max=Integer.MIN_VALUE;
-        m=new int[k];
-        st=new StringTokenizer(br.readLine());
-        for(int i=0;i<k;i++){
+        int n=Integer.parseInt(st.nextToken());
+        m=Integer.parseInt(st.nextToken());
+        tree=new int [n];
+        st=new StringTokenizer(br.readLine(), " ");
+        for(int i=0;i<n;i++){
             int num=Integer.parseInt(st.nextToken());
-            m[i]=num;
+            tree[i]=num;
             max=Math.max(max,num);
         }
-        System.out.println(len());
+        System.out.println(height());
     }
 
-    public static long count (int number){
-        long cnt=0;
-        for (int i : m) {
-            if(i>number) cnt+=(i-number);
+    public static long len(int mid){
+        long count=0;
+        for(int num:tree){
+            if(num>mid) count+=(num-mid);
         }
-        return cnt;
+        return count;
     }
-    public static int len(){
-        int left=1;
-        int right=max;
+
+    public static int height(){
+        int left=0;
+        int right=max+1;
         while(left<right){
             int mid=(left+right)/2;
-            if(count(mid)<n) right=mid;
+            if(len(mid)<m) right=mid;
             else left=mid+1;
         }
         return right-1;
