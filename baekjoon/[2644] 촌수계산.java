@@ -9,8 +9,7 @@ class Main{
     static int check[];
     static int x;
     static int y;
-    static int cnt=0;
-    static boolean ch=false;
+    static int cnt=-1;
     public static void main(String [] args) throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         n=Integer.parseInt(br.readLine());
@@ -29,13 +28,12 @@ class Main{
         }
         check[x-1]=1;
         dfs(x-1,0);
-        System.out.println(ch?cnt:-1);
+        System.out.println(cnt);
     }
 
     public static void dfs(int v,int count){
         if(v==y-1) {
             cnt=count;
-            ch=true;
             return;
         }
         for(int i=0;i<n;i++){
