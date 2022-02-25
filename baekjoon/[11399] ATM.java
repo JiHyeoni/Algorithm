@@ -1,23 +1,26 @@
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.*;
 
 class Main{
-    public static void main(String [] args){
-        Scanner s=new Scanner(System.in);
-        int n=s.nextInt();
-        int [] time=new int[n];
+    public static void main(String [] args)throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        int n=Integer.parseInt(br.readLine());
+        int p[]=new int[n];
+        StringTokenizer st=new StringTokenizer(br.readLine());
         for(int i=0;i<n;i++){
-            time[i]=s.nextInt();
+            p[i]=Integer.parseInt(st.nextToken());
         }
-
-        Arrays.sort(time);
+        Arrays.sort(p);
 
         int sum=0;
         int k=n;
         for(int i=0;i<n;i++){
-            sum+=time[i]*k;
+            sum+=p[i]*k;
             k--;
         }
-
         System.out.println(sum);
+
     }
 }
